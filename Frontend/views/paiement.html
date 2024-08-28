@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paiement - MyRestaurant</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            margin-bottom: 20px;
+        }
+        .payment-form {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: auto;
+        }
+        .btn-primary, .btn-success {
+            margin-top: 10px;
+        }
+        .form-control {
+            background-color: #555;
+            color: white;
+            border: none;
+        }
+        .form-control:focus {
+            background-color: #666;
+            color: white;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">MyRestaurant</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="panier.html">Retour au Panier</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Déconnexion</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Payment Form -->
+    <div class="container">
+        <div class="payment-form">
+            <h4>Choisissez votre méthode de paiement</h4>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="paymentMethod" id="paymentCard" value="card" checked>
+                <label class="form-check-label" for="paymentCard">Carte Bancaire</label>
+            </div>
+            <div class="form-check mb-4">
+                <input class="form-check-input" type="radio" name="paymentMethod" id="paymentCash" value="cash">
+                <label class="form-check-label" for="paymentCash">Espèces</label>
+            </div>
+
+            <!-- Payment by Card -->
+            <div id="cardDetails" class="payment-option">
+                <h5>Détails de la carte</h5>
+                <div class="form-group">
+                    <label for="cardNumber">Numéro de carte</label>
+                    <input type="text" class="form-control" id="cardNumber" placeholder="Entrez votre numéro de carte" required>
+                </div>
+                <div class="form-group">
+                    <label for="cardName">Nom sur la carte</label>
+                    <input type="text" class="form-control" id="cardName" placeholder="Entrez le nom sur la carte" required>
+                </div>
+                <div class="form-group">
+                    <label for="expiryDate">Date d'expiration</label>
+                    <input type="text" class="form-control" id="expiryDate" placeholder="MM/AA" required>
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <input type="text" class="form-control" id="cvv" placeholder="Entrez le CVV" required>
+                </div>
+                <!-- Update button to redirect to facture.html after successful payment -->
+                <button class="btn btn-success btn-block" onclick="window.location.href='facture.html'">Payer</button>
+            </div>
+
+            <!-- Payment by Cash -->
+            <div id="cashDetails" class="payment-option hidden">
+                <h5>Paiement en espèces</h5>
+                <p>Veuillez préparer le montant exact pour le paiement en espèces.</p>
+                <button class="btn btn-success btn-block" onclick="window.location.href='facture.html'">Confirmer le paiement en espèces</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // JavaScript pour gérer l'affichage des options de paiement
+        document.querySelectorAll('input[name="paymentMethod"]').forEach((elem) => {
+            elem.addEventListener('change', function() {
+                var cardDetails = document.getElementById('cardDetails');
+                var cashDetails = document.getElementById('cashDetails');
+                if (this.value === 'card') {
+                    cardDetails.classList.remove('hidden');
+                    cashDetails.classList.add('hidden');
+                } else {
+                    cardDetails.classList.add('hidden');
+                    cashDetails.classList.remove('hidden');
+                }
+            });
+        });
+    </script>
+    <script src="../js/paiement.js"></script>
+</body>
+</html>

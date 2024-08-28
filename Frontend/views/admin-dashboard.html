@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Bord Administrateur - MyRestaurant</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            margin-bottom: 20px;
+        }
+        .dashboard-container {
+            max-width: 1000px;
+            margin: auto;
+        }
+        .btn-primary, .btn-success, .btn-danger, .btn-info {
+            margin-top: 10px;
+        }
+        .card-header {
+            background-color: #333;
+            color: white;
+        }
+        .table thead th {
+            border-bottom: 2px solid #444;
+        }
+        .table tbody td {
+            border-top: 1px solid #444;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <!-- Navbar mise à jour avec des liens supplémentaires pour les administrateurs -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">MyRestaurant</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="user-management.html">Gestion des Utilisateurs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="order-history.html">Historique des Commandes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">Déconnexion</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <!-- Admin Dashboard Content -->
+    <div class="container dashboard-container">
+        <!-- Products Management -->
+        <div class="card mb-4">
+            <div class="card-header">
+                Gestion des Produits
+            </div>
+            <div class="card-body">
+                <button class="btn btn-success" data-toggle="modal" data-target="#addProductModal">Ajouter un Produit</button>
+                <table class="table table-dark mt-3">
+                    <thead>
+                        <tr>
+                            <th>Nom du Produit</th>
+                            <th>Catégorie</th>
+                            <th>Prix</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Example product row -->
+                        <tr>
+                            <td>Plat 1</td>
+                            <td>Plat</td>
+                            <td>€12.00</td>
+                            <td>
+                                <button class="btn btn-info btn-sm">Modifier</button>
+                                <button class="btn btn-danger btn-sm">Supprimer</button>
+                            </td>
+                        </tr>
+                        <!-- More products will be dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Orders Management -->
+        <div class="card">
+            <div class="card-header">
+                Gestion des Commandes
+            </div>
+            <div class="card-body">
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th>Numéro de Commande</th>
+                            <th>Numéro de Table</th>
+                            <th>Détails de la Commande</th>
+                            <th>Statut</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Example order row -->
+                        <tr>
+                            <td>12345</td>
+                            <td>12</td>
+                            <td>
+                                Plat 1 x1, Boisson 1 x2, Sauce 1 x1
+                            </td>
+                            <td>Servie</td>
+                        </tr>
+                        <!-- More orders will be dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Adding Product -->
+    <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addProductModalLabel">Ajouter un Produit</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fermer">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="productName">Nom du Produit</label>
+                            <input type="text" class="form-control" id="productName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productCategory">Catégorie</label>
+                            <select class="form-control" id="productCategory">
+                                <option>Plat</option>
+                                <option>Boisson</option>
+                                <option>Sauce</option>
+                                <option>Dessert</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="productPrice">Prix</label>
+                            <input type="number" class="form-control" id="productPrice" required>
+                        </div>
+                        <button type="submit" class="btn btn-success">Ajouter</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // JavaScript pour gérer les actions des produits et commandes
+        document.addEventListener('DOMContentLoaded', function() {
+            var addProductForm = document.querySelector('#addProductModal form');
+
+            addProductForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var productName = document.getElementById('productName').value;
+                var productCategory = document.getElementById('productCategory').value;
+                var productPrice = document.getElementById('productPrice').value;
+
+                // Ajouter dynamiquement le produit dans le tableau
+                var tableBody = document.querySelector('.table-dark tbody');
+                var newRow = document.createElement('tr');
+                newRow.innerHTML = `
+                    <td>${productName}</td>
+                    <td>${productCategory}</td>
+                    <td>€${productPrice}</td>
+                    <td>
+                        <button class="btn btn-info btn-sm">Modifier</button>
+                        <button class="btn btn-danger btn-sm">Supprimer</button>
+                    </td>
+                `;
+                tableBody.appendChild(newRow);
+
+                // Réinitialiser le formulaire et fermer le modal
+                addProductForm.reset();
+                $('#addProductModal').modal('hide');
+            });
+        });
+    </script>
+    <!-- login.html -->
+    <script src="../js/admin-dashboard.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panier - MyRestaurant</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            margin-bottom: 20px;
+        }
+        .cart-summary {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .btn-primary, .btn-success {
+            margin-top: 10px;
+        }
+        .form-control {
+            background-color: #555;
+            color: white;
+            border: none;
+        }
+        .form-control:focus {
+            background-color: #666;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">MyRestaurant</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="client-dashboard.html">Retour au Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Déconnexion</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Panier Content -->
+    <div class="container">
+        <div class="cart-summary">
+            <h4>Votre panier</h4>
+            <ul class="list-group mb-3">
+                <!-- Example cart item -->
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Plat 1
+                    <span>€12.00</span>
+                </li>
+                <!-- More items dynamically added here -->
+            </ul>
+            <h5>Total: €12.00</h5>
+
+            <!-- Champ Numéro de Table -->
+            <div class="form-group">
+                <label for="tableNumber" class="text-white">Numéro de table</label>
+                <input type="number" class="form-control" id="tableNumber" placeholder="Entrez votre numéro de table" required>
+                <a href="confirmation.html" class="btn btn-success btn-block">Confirmer la Commande</a>
+            </div>
+            
+            <button class="btn btn-success btn-block">Passer à la caisse</button>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../js/panier.js"></script>
+</body>
+</html>

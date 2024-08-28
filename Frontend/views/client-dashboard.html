@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de bord client - MyRestaurant</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            margin-bottom: 20px;
+        }
+        .card {
+            margin: 10px;
+        }
+        .nav-tabs .nav-link {
+            color: #333;
+        }
+        .nav-tabs .nav-link.active {
+            background-color: #007bff;
+            color: white;
+        }
+        .menu-section {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">MyRestaurant</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Déconnexion</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="panier.html">Voir Panier</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <!-- Sidebar for Menu -->
+            <div class="col-md-3">
+                <ul class="nav nav-tabs flex-column" id="menuTabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="plats-tab" data-toggle="tab" href="#plats" role="tab" aria-controls="plats" aria-selected="true">Plats</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="boissons-tab" data-toggle="tab" href="#boissons" role="tab" aria-controls="boissons" aria-selected="false">Boissons</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="sauces-tab" data-toggle="tab" href="#sauces" role="tab" aria-controls="sauces" aria-selected="false">Sauces</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Menu Section with Tabs -->
+            <div class="col-md-9 menu-section">
+                <div class="tab-content" id="menuTabContent">
+                    <!-- Plats Tab -->
+                    <div class="tab-pane fade show active" id="plats" role="tabpanel" aria-labelledby="plats-tab">
+                        <h2>Plats</h2>
+                        <div class="row">
+                            <!-- Example product card for plats -->
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <img src="img/plat1.jpg" class="card-img-top" alt="Plat 1">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Plat 1</h5>
+                                        <p class="card-text">Description du plat 1.</p>
+                                        <p class="card-text"><strong>Prix: €12.00</strong></p>
+                                        <button class="btn btn-primary btn-block">Ajouter au panier</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Add more product cards for plats as needed -->
+                        </div>
+                    </div>
+
+                    <!-- Boissons Tab -->
+                    <div class="tab-pane fade" id="boissons" role="tabpanel" aria-labelledby="boissons-tab">
+                        <h2>Boissons</h2>
+                        <div class="row">
+                            <!-- Example product card for boissons -->
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <img src="img/boisson1.jpg" class="card-img-top" alt="Boisson 1">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Boisson 1</h5>
+                                        <p class="card-text">Description de la boisson 1.</p>
+                                        <p class="card-text"><strong>Prix: €3.50</strong></p>
+                                        <button class="btn btn-primary btn-block">Ajouter au panier</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Add more product cards for boissons as needed -->
+                        </div>
+                    </div>
+
+                    <!-- Sauces Tab -->
+                    <div class="tab-pane fade" id="sauces" role="tabpanel" aria-labelledby="sauces-tab">
+                        <h2>Sauces</h2>
+                        <div class="row">
+                            <!-- Example product card for sauces -->
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <img src="img/sauce1.jpg" class="card-img-top" alt="Sauce 1">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Sauce 1</h5>
+                                        <p class="card-text">Description de la sauce 1.</p>
+                                        <p class="card-text"><strong>Prix: €1.00</strong></p>
+                                        <button class="btn btn-primary btn-block">Ajouter au panier</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Add more product cards for sauces as needed -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../js/client-dashboard.js"></script>
+
+</body>
+</html>

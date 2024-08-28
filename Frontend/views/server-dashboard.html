@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Bord Serveur - MyRestaurant</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            margin-bottom: 20px;
+        }
+        .order-table-container {
+            max-width: 1000px;
+            margin: auto;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .btn-primary, .btn-success, .btn-danger {
+            margin-top: 10px;
+        }
+        .table thead th {
+            border-bottom: 2px solid #444;
+        }
+        .table tbody td {
+            border-top: 1px solid #444;
+        }
+        .btn-action {
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <!-- Navbar mise à jour avec des liens supplémentaires pour les serveurs -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">MyRestaurant</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="order-history.html">Historique des Commandes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">Déconnexion</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <!-- Orders Table -->
+    <div class="container">
+        <div class="order-table-container">
+            <h4 class="text-center">Commandes des Clients</h4>
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th>Numéro de Commande</th>
+                        <th>Numéro de Table</th>
+                        <th>Détails de la Commande</th>
+                        <th>Statut</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Example order row -->
+                    <tr>
+                        <td>12345</td>
+                        <td>12</td>
+                        <td>
+                            Plat 1 x1, Boisson 1 x2, Sauce 1 x1
+                        </td>
+                        <td>En préparation</td>
+                        <td>
+                            <button class="btn btn-success btn-action">Prête</button>
+                            <button class="btn btn-danger btn-action">Servie</button>
+                        </td>
+                    </tr>
+                    <!-- More orders will be dynamically added here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // JavaScript pour gérer les actions des commandes
+        document.addEventListener('DOMContentLoaded', function() {
+            var buttonsReady = document.querySelectorAll('.btn-success');
+            var buttonsServed = document.querySelectorAll('.btn-danger');
+
+            buttonsReady.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var row = this.closest('tr');
+                    row.querySelector('td:nth-child(4)').textContent = 'Prête';
+                });
+            });
+
+            buttonsServed.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var row = this.closest('tr');
+                    row.querySelector('td:nth-child(4)').textContent = 'Servie';
+                });
+            });
+        });
+    </script>
+    <script src="../js/server-dashboard.js"></script>
+</body>
+</html>
